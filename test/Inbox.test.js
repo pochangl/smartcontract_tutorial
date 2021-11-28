@@ -5,10 +5,11 @@ const { exit } = require('process');
 const Web3 = require('web3');
 const web3 = new Web3(ganache.provider());
 
-const contracts = require('../compile');
+const compile = require('../compile');
+const Inbox = compile('Inbox.sol').Inbox;
 
-const bytecode = contracts['Inbox.sol'].Inbox.evm.bytecode.object;
-const interface = contracts['Inbox.sol'].Inbox.abi;
+const bytecode = Inbox.evm.bytecode.object;
+const interface = Inbox.abi;
 
 let accounts;
 let inbox;
